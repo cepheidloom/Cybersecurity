@@ -24,7 +24,7 @@ make
 5. If the module compiled successfully, you should see a `blocker.ko` file in the directory. This is the compiled module.
 6. Now, load the module into the kernel:
 ```
-sudo insmod firewall.ko
+sudo insmod blocker.ko
 ```
 6. You can check if the module is loaded by:
 ```
@@ -38,7 +38,7 @@ sudo rmmod firewall
 ---
 Once the kernel module (`.ko` file) is loaded into the kernel using `insmod`, it starts working immediately. Kernel modules are not like typical executables that you run from the command line. Instead, they extend the functionality of the kernel itself.
 
-In your case, the module is designed to block DNS packets at port 53 coming from IP address 2.2.2.2. So, to test if it's working, you would need to generate such network traffic and see if it's being blocked.
+In this case, the module is designed to block DNS packets at port 53 coming from IP address 2.2.2.2. So, to test if it's working, you would need to generate such network traffic and see if it's being blocked.
 
 You can use tools like `dig`, `nslookup`, or `netcat` to generate DNS requests.
 After generating the traffic, you can check the kernel log messages using `dmesg` to see if your module is printing the "Packet Dropped" message. This would indicate that it's working as expected.
