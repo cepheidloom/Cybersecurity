@@ -5,6 +5,7 @@
 #include <linux/ip.h>
 #include <linux/tcp.h>
 #include <linux/udp.h>
+#include <linux/inet.h>
 
 static struct nf_hook_ops hook1, hook2;
 
@@ -13,20 +14,22 @@ unsigned int hello1(void *priv, struct sk_buff *skb,
     struct iphdr *ip_header = ip_hdr(skb);
     struct udphdr *udp_header;
     struct tcphdr *tcp_header;
-
-    if (ip_header->protocol == IPPROTO_UDP) {
-        udp_header = udp_hdr(skb);
-        if (ntohs(udp_header->dest) == 53) {
-            printk(KERN_INFO "*** Blocking UDP traffic on port 53\n");
-            return NF_DROP;
+    //checking for the IP address 2.2.2.2
+     if (ip_header->saddr == in_aton("2.2.2.2")) {
+        if (ip_header->protocol == IPPROTO_UDP) {
+            udp_header = udp_hdr(skb);
+            if (ntohs(udp_header->dest) == 53) {
+                printk(KERN_INFO "*** Packet Dropped\n");
+                return NF_DROP;
+            }
+        } else if (ip_header->protocol == IPPROTO_TCP) {
+            tcp_header = tcp_hdr(skb);
+            if (ntohs(tcp_header->dest) == 53) {
+                printk(KERN_INFO "*** Packet Dropped\n");
+                return NF_DROP;
+            }
         }
-    } else if (ip_header->protocol == IPPROTO_TCP) {
-        tcp_header = tcp_hdr(skb);
-        if (ntohs(tcp_header->dest) == 53) {
-            printk(KERN_INFO "*** Blocking TCP traffic on port 53\n");
-            return NF_DROP;
-        }
-    }
+     }
 
     return NF_ACCEPT;
 }
