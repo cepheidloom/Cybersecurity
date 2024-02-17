@@ -2,7 +2,7 @@ To run this code, which is a Linux kernel module, you need to compile it and the
 
 1. Copy the file `blocker.c` in whichever directory you want.
     
-2. You need a Makefile to compile the module. Create a file named `Makefile` in the same directory with the following content:
+2. You need a Makefile to compile the module. You can either use the Makefile in this repo or make one yourself. Process of making one yourself is, Create a file named `Makefile` in the same directory with the following content:
     
 ```Makefile
 obj-m += blocker.o
