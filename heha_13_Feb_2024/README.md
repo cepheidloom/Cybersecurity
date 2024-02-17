@@ -5,15 +5,13 @@ To run this code, which is a Linux kernel module, you need to compile it and the
 2. You need a Makefile to compile the module. Create a file named `Makefile` in the same directory with the following content:
     
 ```Makefile
-obj-m += blocker.o
+obj-m += blocker.o
 
 all:
-
-    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 clean:
-
-    make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
 ```
 *Remember that the Makefile file will have no extension and you simply have to create a file named just "Makefile" using the touch command in linux.*
 
