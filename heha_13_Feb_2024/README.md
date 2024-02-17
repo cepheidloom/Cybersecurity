@@ -28,11 +28,11 @@ sudo insmod blocker.ko
 ```
 6. You can check if the module is loaded by:
 ```
-lsmod | grep firewall
+lsmod | grep blocker
 ```
 8. To remove the module, you can use:
 ```
-sudo rmmod firewall
+sudo rmmod blocker
 ```
 
 ---
