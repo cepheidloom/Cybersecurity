@@ -1,6 +1,6 @@
 To run this code, which is a Linux kernel module, you need to compile it and then load it into the kernel. Here are the steps:
 
-1. Save the code in a file, say `blocker.c`
+1. Copy the file `blocker.c` in whichever directory you want.
     
 2. You need a Makefile to compile the module. Create a file named `Makefile` in the same directory with the following content:
     
