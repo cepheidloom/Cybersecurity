@@ -18,14 +18,22 @@ clean:
 *Remember that the Makefile file will have no extension and you simply have to create a file named just "Makefile" using the touch command in linux.*
 
 3. Now, compile the module by running `make` in the terminal:
-> `make`
-4. If the module compiled successfully, you should see a `blocker.ko` file in the directory. This is the compiled module.
-5. Now, load the module into the kernel:
-> `sudo insmod firewall.ko`
+```
+make
+```
+5. If the module compiled successfully, you should see a `blocker.ko` file in the directory. This is the compiled module.
+6. Now, load the module into the kernel:
+```
+sudo insmod firewall.ko
+```
 6. You can check if the module is loaded by:
-> `lsmod | grep firewall`
-7. To remove the module, you can use:
-> `sudo rmmod firewall`
+```
+lsmod | grep firewall
+```
+8. To remove the module, you can use:
+```
+sudo rmmod firewall
+```
 
 ---
 Once the kernel module (`.ko` file) is loaded into the kernel using `insmod`, it starts working immediately. Kernel modules are not like typical executables that you run from the command line. Instead, they extend the functionality of the kernel itself.
