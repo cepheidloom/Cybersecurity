@@ -1,0 +1,1 @@
+alert tcp 10.1.1.1 any -> 10.1.1.2 any (msg:"Lol, you are compromised, TCP detected from 10.1.1.1 to 10.1.1.2"; sid:1000001;)
